@@ -14,7 +14,11 @@ export const fetchDonutDetailOpts = (donutId: string) =>
     queryKey: ["donuts", "detail", donutId],
     async queryFn() {
       const r = await ky
-        .get(`http://localhost:7200/api/donuts/${donutId}`)
+        // "Eigentlich" müssten jetzt auf Donut + Kommentare insg.
+        // 1200ms gewartet werden (s. slow unten)
+        // es dauert aber länger, weil beide Request NACHEINANDER
+        // ausgeführt werden
+        .get(`http://localhost:7200/api/donuts/${donutId}?slow=1200`)
         .json();
       return DonutDto.parse(r);
     },
@@ -25,7 +29,8 @@ export const fetchCommentsOpts = (donutId: string) =>
     queryKey: ["donuts", "detail", donutId, "comments"],
     async queryFn() {
       const r = await ky
-        .get(`http://localhost:7200/api/donuts/${donutId}/comments?slow=2400`)
+        // gleiche slow-Zeit wie beim Donut
+        .get(`http://localhost:7200/api/donuts/${donutId}/comments?slow=1200`)
         .json();
       return DonutCommentDtoList.parse(r);
     },
