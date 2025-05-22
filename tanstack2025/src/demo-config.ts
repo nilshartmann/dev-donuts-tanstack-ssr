@@ -1,4 +1,11 @@
-export const showQueryDevTools = false;
+// Durch die App navigieren: Liste -> Detail -> Liste -> Detail
+//   Daten kommen aus dem CLIENT Cache
+//   weil die geladenen Daten aus TS Query auch in den Cache im Client
+//   kommen
+//
+// -> Die Request, die auf dem Client ausgeführt werden
+//    gehen direkt gegen unser (internes) API Backend
+export const showQueryDevTools = true;
 
 // SSR einschalten.
 // Das würde man in einer echten Anwendung so nicht machen,
