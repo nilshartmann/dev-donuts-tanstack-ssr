@@ -10,16 +10,18 @@ export default function CommentList({ donutId }: CommentListProps) {
   return (
     <div className={"CommentList"}>
       <h1>What the Snackers Say</h1>
-      <CommentListView cardId={donutId} />
+      <Suspense fallback={<CommentLoadingIndicator />}>
+        <CommentListView donutId={donutId} />
+      </Suspense>
     </div>
   );
 }
 
 type CommentListViewProps = {
-  cardId: string;
+  donutId: string;
 };
-function CommentListView({ cardId }: CommentListViewProps) {
-  const { data: comments } = useSuspenseQuery(fetchCommentsOpts(cardId));
+function CommentListView({ donutId }: CommentListViewProps) {
+  const { data: comments } = useSuspenseQuery(fetchCommentsOpts(donutId));
 
   return comments.map((c) => (
     <div key={c.id} className={"CommentItem"}>

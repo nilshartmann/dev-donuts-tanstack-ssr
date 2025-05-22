@@ -14,7 +14,7 @@ export default function DonutDetail({ donut }: DonutDetailProps) {
     >
       <Donut donut={donut} />
 
-      {/*<CommentList donutId={donut.id} />*/}
+      <CommentList donutId={donut.id} />
     </div>
   );
 }
