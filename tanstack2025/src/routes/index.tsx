@@ -27,8 +27,8 @@ export default function RouteComponent() {
       </div>
       <div className="mt-8 shrink-0">
         <h2 className="font-caveat text-center text-4xl font-bold text-pink-700 md:text-6xl">
-          "<span className={"text-sprinkleBlue"}>Donuts</span> is the new{" "}
-          <span className={"text-sprinkleBlue"}>Insta</span>" (Mickey Mouse)
+          "<span className={"text-brown"}>Donuts</span> is the new{" "}
+          <span className={"text-brown"}>Insta</span>" (Mickey Mouse)
         </h2>
       </div>
 

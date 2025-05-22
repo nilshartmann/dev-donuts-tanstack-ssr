@@ -1,18 +1,17 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { Suspense } from "react";
-import { CommentDtoList } from "@/types";
-import { fetchCommentsOpts } from "@/queries.ts";
 import LoadingIndicator from "@/components/LoadingIndicator.tsx";
+import { fetchCommentsOpts } from "@/queries.ts";
 
 type CommentListProps = {
-  cardId: string;
+  donutId: string;
 };
-export default function CommentList({ cardId }: CommentListProps) {
+export default function CommentList({ donutId }: CommentListProps) {
   return (
     <div className={"CommentList"}>
-      <h1>Comments</h1>
+      <h1>What the Snackers Say</h1>
       <Suspense fallback={<CommentLoadingIndicator />}>
-        <CommentListView cardId={cardId} />
+        <CommentListView cardId={donutId} />
       </Suspense>
     </div>
   );
@@ -26,7 +25,9 @@ function CommentListView({ cardId }: CommentListViewProps) {
 
   return comments.map((c) => (
     <div key={c.id} className={"CommentItem"}>
-      <h2>{c.text}</h2>
+      <p>
+        {c.text} <span className={"text-dough"}>({c.author})</span>
+      </p>
     </div>
   ));
 }

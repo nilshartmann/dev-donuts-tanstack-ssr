@@ -120,6 +120,14 @@
     @apply rounded-lg border px-2 py-2;
   }
 
+  .DonutItem {
+    @apply border-sprinkleBlue bg-sprinkleWhite text-dough shadow-sprinkleBlue hover:bg-bg flex items-center space-x-8 rounded-2xl border-2 px-8 py-8 hover:drop-shadow-2xl;
+  }
+
+  .DonutItem a {
+    @apply hover:text-sprinkleOrange text-brown no-underline underline-offset-8 hover:underline;
+  }
+
   .CardImage {
     @apply relative w-48 border-4 border-white;
   }

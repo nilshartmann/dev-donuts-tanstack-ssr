@@ -1,5 +1,5 @@
 import { DonutDto } from "@/types.ts";
-import DonutCommentList from "@/components/DonutCommentList.tsx";
+import CommentList from "@/components/CommentList.tsx";
 import Donut from "@/components/Donut.tsx";
 
 type DonutDetailProps = {
@@ -14,7 +14,7 @@ export default function DonutDetail({ donut }: DonutDetailProps) {
     >
       <Donut donut={donut} />
 
-      <DonutCommentList donutId={donut.id} />
+      <CommentList donutId={donut.id} />
     </div>
   );
 }

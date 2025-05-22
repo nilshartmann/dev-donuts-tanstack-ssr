@@ -5,7 +5,7 @@ import { showQueryDevTools } from "@/demo-config.ts";
 
 export default function SpaRootComponent() {
   return (
-    <div className="bg-glaze-subtle text-brown font-fredoka font-a min-h-screen">
+    <div className="bg-glaze-subtle text-brown font-fredoka font-a min-h-screen pb-8">
       <HeadContent />
       <>
         {/*<Colors />*/}
