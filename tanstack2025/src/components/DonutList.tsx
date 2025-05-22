@@ -34,9 +34,8 @@ function DonutItem({ donut }: DonutDetailProps) {
         }
         src={`/images/${donut.image}`}
       />
-      <Link to={"/donuts/$donutId"} params={{ donutId: donut.id }}>
-        <h2 className={"font-caveat text-3xl"}>{donut.name}</h2>
-      </Link>
+      {/* todo: link! */}
+      <h2 className={"font-caveat text-3xl"}>{donut.name}</h2>
     </div>
   );
 }

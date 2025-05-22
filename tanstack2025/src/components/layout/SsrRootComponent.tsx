@@ -9,10 +9,12 @@ export default function SsrRootComponent() {
       <head>
         <HeadContent />
       </head>
-      <body suppressHydrationWarning>
-        <header>
-          <NavBar />
-        </header>
+      <body
+        suppressHydrationWarning
+        className={
+          "bg-glaze-subtle text-brown font-fredoka font-a min-h-screen pb-8"
+        }
+      >
         <Outlet />
         {showQueryDevTools && <ReactQueryDevtools />}
         <Scripts />

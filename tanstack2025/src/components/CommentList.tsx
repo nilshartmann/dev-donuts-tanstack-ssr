@@ -10,9 +10,7 @@ export default function CommentList({ donutId }: CommentListProps) {
   return (
     <div className={"CommentList"}>
       <h1>What the Snackers Say</h1>
-      <Suspense fallback={<CommentLoadingIndicator />}>
-        <CommentListView cardId={donutId} />
-      </Suspense>
+      <CommentListView cardId={donutId} />
     </div>
   );
 }
