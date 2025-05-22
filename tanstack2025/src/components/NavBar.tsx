@@ -16,12 +16,6 @@ export default function NavBar() {
       >
         Donuts
       </Link>
-      <Link
-        className="hover:text-sprinkleBlue text-brown tracking-wider"
-        to={"/editor"}
-      >
-        Create
-      </Link>
     </nav>
   );
 }

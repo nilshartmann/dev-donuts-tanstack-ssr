@@ -221,11 +221,14 @@
   }
 
   .CommentList {
-    @apply mt-12 flex w-full flex-col items-center space-y-8 rounded-2xl border-2 border-stone-200 p-8;
+    @apply text-brown font-caveat flex w-1/2 flex-col items-center space-y-8 rounded-2xl border-2 border-stone-200 p-8 font-normal tracking-wider;
+  }
+  .CommentList h1 {
+    @apply text-4xl tracking-wider text-pink-600;
   }
 
   .CommentItem {
-    @apply flex items-start space-x-4 rounded-2xl border-2 border-stone-200 p-4 shadow-lg;
+    @apply bg-sprinkleWhite flex items-start space-x-4 rounded-2xl border-2 border-stone-200 p-4 text-3xl font-bold tracking-wider shadow-lg;
   }
 }
 

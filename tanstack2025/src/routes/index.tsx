@@ -21,8 +21,13 @@ export default function RouteComponent() {
 
       {/* Row 2: Subtitle */}
       <div className="shrink-0">
-        <h2 className="font-caveat text-center text-4xl font-bold text-pink-400 md:text-6xl">
+        <h2 className="font-caveat text-center text-4xl font-bold text-pink-700 md:text-6xl">
           From devs to donuts ... commit to the hole.
+        </h2>
+      </div>
+      <div className="shrink-0">
+        <h2 className="font-caveat text-center text-4xl font-bold text-pink-700 md:text-6xl">
+          "Donuts is the new Insta" (Mickey Mouse)
         </h2>
       </div>
 
@@ -32,7 +37,7 @@ export default function RouteComponent() {
       </div>
 
       {/* Row 4: Footer */}
-      <div className="shrink-0">
+      <div className="mb-8 shrink-0">
         <h2 className="font-caveat mb-2 text-center text-4xl font-bold text-pink-700 md:text-6xl">
           Built with React, boosted by TanStack 🤤
         </h2>

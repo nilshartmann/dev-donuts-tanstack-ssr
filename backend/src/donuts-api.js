@@ -38,6 +38,82 @@ const allDonuts = [
   },
 ]
 
+const allComments = [
+  {
+    "id": "cmt_001",
+    "text": "Schmeckt nach einem Commit ohne Review – riskant, aber genial.",
+    "author": "code_cruncher42",
+    "donut_id": "1"
+  },
+  {
+    "id": "cmt_002",
+    "text": "Streusel-Level: 11/10. Mein Linter würde meckern, aber ich nicht.",
+    "author": "frontendFlo",
+    "donut_id": "1"
+  },
+  {
+    "id": "cmt_003",
+    "text": "Zimt-Schock! Habe aus Versehen meine Tastatur gegessen.",
+    "author": "snackoverflow",
+    "donut_id": "2"
+  },
+  {
+    "id": "cmt_004",
+    "text": "Stacktrace beim Reinbeißen – ich liebe es.",
+    "author": "debuggery",
+    "donut_id": "2"
+  },
+  {
+    "id": "cmt_005",
+    "text": "Der Merge war süßer als erwartet. Trotzdem Konflikt im Magen.",
+    "author": "gitgourmet",
+    "donut_id": "3"
+  },
+  {
+    "id": "cmt_006",
+    "text": "Hat mein Herz geforkt.",
+    "author": "issue_lover",
+    "donut_id": "3"
+  },
+  {
+    "id": "cmt_007",
+    "text": "So reaktiv, ich glaube der Donut hat selbst useEffect benutzt.",
+    "author": "jsx_junkie",
+    "donut_id": "4"
+  },
+  {
+    "id": "cmt_008",
+    "text": "State-Management? Dieser Donut regelt das mit Geschmack.",
+    "author": "hooked_on_sweets",
+    "donut_id": "4"
+  },
+  {
+    "id": "cmt_009",
+    "text": "Glasur-exception bei Biss 3 – worth it.",
+    "author": "choco_dev",
+    "donut_id": "5"
+  },
+  {
+    "id": "cmt_010",
+    "text": "Würde ich in jeden Sprint einplanen.",
+    "author": "scrummybaker",
+    "donut_id": "5"
+  },
+  {
+    "id": "cmt_011",
+    "text": "Nicht production-ready, aber staging-tauglich.",
+    "author": "pipeline_peter",
+    "donut_id": "6"
+  },
+  {
+    "id": "cmt_012",
+    "text": "Der Bug war leckerer als erwartet.",
+    "author": "qa_queen",
+    "donut_id": "6"
+  }
+]
+
+
 
 module.exports = function setupDonutsApi(app) {
   app.get("/api/donuts", (req, res) => {
@@ -53,5 +129,13 @@ module.exports = function setupDonutsApi(app) {
 
     return res.status(200).json(theDonut)
   })
+
+  app.get("/api/donuts/:donutId/comments", (req, res) => {
+    const thisComments = allComments.filter((c) => c.donut_id === req.params.donutId);
+
+    console.log("COMMENTS", thisComments);
+
+    return res.status(200).json(thisComments);
+  });
 
 }

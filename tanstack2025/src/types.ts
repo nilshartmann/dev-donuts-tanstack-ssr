@@ -35,3 +35,13 @@ export type CommentDto = z.infer<typeof CommentDto>;
 
 export const CommentDtoList = CommentDto.array();
 export type CommentDtoList = z.infer<typeof CommentDtoList>;
+
+export const DonutCommentDto = z.object({
+  id: z.string(),
+  author: z.string(),
+  text: z.string(),
+});
+export type DonutCommentDto = z.infer<typeof DonutCommentDto>;
+
+export const DonutCommentDtoList = DonutCommentDto.array();
+export type DonutCommentDtoList = z.infer<typeof DonutCommentDtoList>;

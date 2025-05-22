@@ -6,6 +6,7 @@ import {
   CardDto,
   CardDtoList,
   CommentDtoList,
+  DonutCommentDtoList,
   DonutDto,
   DonutDtoList,
 } from "@/types";
@@ -35,6 +36,17 @@ export const fetchDonutDetailOpts = (donutId: string) =>
         .get(`http://localhost:7200/api/donuts/${donutId}`)
         .json();
       return DonutDto.parse(r);
+    },
+  });
+
+export const fetchDonutCommentsOpts = (donutId: string) =>
+  queryOptions({
+    queryKey: ["donuts", "detail", donutId, "comments"],
+    async queryFn() {
+      const r = await ky
+        .get(`http://localhost:7200/api/donuts/${donutId}/comments?slow=1200`)
+        .json();
+      return DonutCommentDtoList.parse(r);
     },
   });
 
