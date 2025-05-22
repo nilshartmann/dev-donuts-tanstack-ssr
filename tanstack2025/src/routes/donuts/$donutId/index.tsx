@@ -5,6 +5,14 @@ import DonutDetail from "@/components/DonutDetail.tsx";
 
 export const Route = createFileRoute("/donuts/$donutId/")({
   component: RouteComponent,
+  loader({ params, context }) {
+    // jetzt wartet der SERVER mit dem Rendern
+    // bis diese Daten geladen sind und schickt dann
+    // den HTML-Code für die GANZE Seite!
+    return context.queryClient.ensureQueryData(
+      fetchDonutDetailOpts(params.donutId),
+    );
+  },
 });
 
 function RouteComponent() {
