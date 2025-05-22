@@ -11,11 +11,27 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as DonutsRouteImport } from './routes/donuts/route'
+import { Route as IndexImport } from './routes/index'
 import { Route as EditorIndexImport } from './routes/editor/index'
+import { Route as DonutsIndexImport } from './routes/donuts/index'
 import { Route as CardsIndexImport } from './routes/cards/index'
+import { Route as DonutsDonutIdIndexImport } from './routes/donuts/$donutId/index'
 import { Route as CardsCardIdIndexImport } from './routes/cards/$cardId/index'
 
 // Create/Update Routes
+
+const DonutsRouteRoute = DonutsRouteImport.update({
+  id: '/donuts',
+  path: '/donuts',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const IndexRoute = IndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const EditorIndexRoute = EditorIndexImport.update({
   id: '/editor/',
@@ -23,10 +39,22 @@ const EditorIndexRoute = EditorIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const DonutsIndexRoute = DonutsIndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DonutsRouteRoute,
+} as any)
+
 const CardsIndexRoute = CardsIndexImport.update({
   id: '/cards/',
   path: '/cards/',
   getParentRoute: () => rootRoute,
+} as any)
+
+const DonutsDonutIdIndexRoute = DonutsDonutIdIndexImport.update({
+  id: '/$donutId/',
+  path: '/$donutId/',
+  getParentRoute: () => DonutsRouteRoute,
 } as any)
 
 const CardsCardIdIndexRoute = CardsCardIdIndexImport.update({
@@ -39,12 +67,33 @@ const CardsCardIdIndexRoute = CardsCardIdIndexImport.update({
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/donuts': {
+      id: '/donuts'
+      path: '/donuts'
+      fullPath: '/donuts'
+      preLoaderRoute: typeof DonutsRouteImport
+      parentRoute: typeof rootRoute
+    }
     '/cards/': {
       id: '/cards/'
       path: '/cards'
       fullPath: '/cards'
       preLoaderRoute: typeof CardsIndexImport
       parentRoute: typeof rootRoute
+    }
+    '/donuts/': {
+      id: '/donuts/'
+      path: '/'
+      fullPath: '/donuts/'
+      preLoaderRoute: typeof DonutsIndexImport
+      parentRoute: typeof DonutsRouteImport
     }
     '/editor/': {
       id: '/editor/'
@@ -60,46 +109,103 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CardsCardIdIndexImport
       parentRoute: typeof rootRoute
     }
+    '/donuts/$donutId/': {
+      id: '/donuts/$donutId/'
+      path: '/$donutId'
+      fullPath: '/donuts/$donutId'
+      preLoaderRoute: typeof DonutsDonutIdIndexImport
+      parentRoute: typeof DonutsRouteImport
+    }
   }
 }
 
 // Create and export the route tree
 
+interface DonutsRouteRouteChildren {
+  DonutsIndexRoute: typeof DonutsIndexRoute
+  DonutsDonutIdIndexRoute: typeof DonutsDonutIdIndexRoute
+}
+
+const DonutsRouteRouteChildren: DonutsRouteRouteChildren = {
+  DonutsIndexRoute: DonutsIndexRoute,
+  DonutsDonutIdIndexRoute: DonutsDonutIdIndexRoute,
+}
+
+const DonutsRouteRouteWithChildren = DonutsRouteRoute._addFileChildren(
+  DonutsRouteRouteChildren,
+)
+
 export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
+  '/donuts': typeof DonutsRouteRouteWithChildren
   '/cards': typeof CardsIndexRoute
+  '/donuts/': typeof DonutsIndexRoute
   '/editor': typeof EditorIndexRoute
   '/cards/$cardId': typeof CardsCardIdIndexRoute
+  '/donuts/$donutId': typeof DonutsDonutIdIndexRoute
 }
 
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
   '/cards': typeof CardsIndexRoute
+  '/donuts': typeof DonutsIndexRoute
   '/editor': typeof EditorIndexRoute
   '/cards/$cardId': typeof CardsCardIdIndexRoute
+  '/donuts/$donutId': typeof DonutsDonutIdIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
+  '/': typeof IndexRoute
+  '/donuts': typeof DonutsRouteRouteWithChildren
   '/cards/': typeof CardsIndexRoute
+  '/donuts/': typeof DonutsIndexRoute
   '/editor/': typeof EditorIndexRoute
   '/cards/$cardId/': typeof CardsCardIdIndexRoute
+  '/donuts/$donutId/': typeof DonutsDonutIdIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/cards' | '/editor' | '/cards/$cardId'
+  fullPaths:
+    | '/'
+    | '/donuts'
+    | '/cards'
+    | '/donuts/'
+    | '/editor'
+    | '/cards/$cardId'
+    | '/donuts/$donutId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/cards' | '/editor' | '/cards/$cardId'
-  id: '__root__' | '/cards/' | '/editor/' | '/cards/$cardId/'
+  to:
+    | '/'
+    | '/cards'
+    | '/donuts'
+    | '/editor'
+    | '/cards/$cardId'
+    | '/donuts/$donutId'
+  id:
+    | '__root__'
+    | '/'
+    | '/donuts'
+    | '/cards/'
+    | '/donuts/'
+    | '/editor/'
+    | '/cards/$cardId/'
+    | '/donuts/$donutId/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
+  DonutsRouteRoute: typeof DonutsRouteRouteWithChildren
   CardsIndexRoute: typeof CardsIndexRoute
   EditorIndexRoute: typeof EditorIndexRoute
   CardsCardIdIndexRoute: typeof CardsCardIdIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  DonutsRouteRoute: DonutsRouteRouteWithChildren,
   CardsIndexRoute: CardsIndexRoute,
   EditorIndexRoute: EditorIndexRoute,
   CardsCardIdIndexRoute: CardsCardIdIndexRoute,
@@ -115,19 +221,39 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
+        "/",
+        "/donuts",
         "/cards/",
         "/editor/",
         "/cards/$cardId/"
       ]
     },
+    "/": {
+      "filePath": "index.tsx"
+    },
+    "/donuts": {
+      "filePath": "donuts/route.tsx",
+      "children": [
+        "/donuts/",
+        "/donuts/$donutId/"
+      ]
+    },
     "/cards/": {
       "filePath": "cards/index.tsx"
+    },
+    "/donuts/": {
+      "filePath": "donuts/index.tsx",
+      "parent": "/donuts"
     },
     "/editor/": {
       "filePath": "editor/index.tsx"
     },
     "/cards/$cardId/": {
       "filePath": "cards/$cardId/index.tsx"
+    },
+    "/donuts/$donutId/": {
+      "filePath": "donuts/$donutId/index.tsx",
+      "parent": "/donuts"
     }
   }
 }

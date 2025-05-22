@@ -15,11 +15,11 @@ const globalCssLink = enableSsr
   : [];
 
 export const Route = createRootRouteWithContext<MyRouterContext>()({
-  loader: ({ location }) => {
-    if (location.pathname === "/") {
-      throw redirect({ to: "/cards" });
-    }
-  },
+  // loader: ({ location }) => {
+  //   if (location.pathname === "/") {
+  //     throw redirect({ to: "/donuts" });
+  //   }
+  // },
   head: () => ({
     meta: [
       {

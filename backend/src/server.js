@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const express = require("express");
 const bodyParser = require("body-parser");
+const setupDonutsApi = require("./donuts-api");
 const { createComments } = require("./data");
 
 const createCards = require("./data").createCards;
@@ -37,6 +38,8 @@ app.use((req, _res, next) => {
     next();
   }
 });
+
+setupDonutsApi(app);
 
 app.get("/api/cards", (req, res) => {
   let result = [...cards];
@@ -164,7 +167,7 @@ app.post("/api/cards/:id/likes", (req, res) => {
   res.status(200).json(likedCard);
 });
 
-const port = process.env.SERVER_PORT || 7100;
+const port = process.env.SERVER_PORT || 7200;
 
 app.listen(port, () => {
   console.log(`

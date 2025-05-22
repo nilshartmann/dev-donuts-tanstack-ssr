@@ -13,6 +13,19 @@ export type CardDto = z.infer<typeof CardDto>;
 export const CardDtoList = CardDto.array();
 export type CardDtoList = z.infer<typeof CardDtoList>;
 
+export const DonutDto = z.object({
+  id: z.string(),
+  name: z.string().min(4),
+  description: z.string(),
+  image: z.string(),
+  // likes: z.number(),
+});
+
+export type DonutDto = z.infer<typeof DonutDto>;
+
+export const DonutDtoList = DonutDto.array();
+export type DonutDtoList = z.infer<typeof DonutDtoList>;
+
 export const CommentDto = z.object({
   id: z.string(),
   author: z.string(),

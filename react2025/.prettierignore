@@ -1,5 +1,0 @@
-pnpm-lock.yaml
-_generated*
-public/**/*.css
-
-src/routeTree.gen.ts
