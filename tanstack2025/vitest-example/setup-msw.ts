@@ -2,7 +2,6 @@ import { HttpResponse, http } from "msw";
 import { setupWorker } from "msw/browser";
 
 import { afterEach } from "vitest";
-import { newCard } from "./test-data.ts";
 import { CardDto } from "@/types.ts";
 
 const worker = setupWorker();
@@ -10,7 +9,7 @@ const worker = setupWorker();
 export const setupApiMock = async () => {
   worker.use(
     http.post("http://localhost:7100/api/cards", async ({ request }) => {
-      return HttpResponse.json(newCard);
+      return HttpResponse.json("TODODODODDODDODO");
     }),
   );
   await worker.start();
