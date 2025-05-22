@@ -25,9 +25,10 @@ export default function RouteComponent() {
           From devs to donuts ... commit to the hole.
         </h2>
       </div>
-      <div className="shrink-0">
+      <div className="mt-8 shrink-0">
         <h2 className="font-caveat text-center text-4xl font-bold text-pink-700 md:text-6xl">
-          "Donuts is the new Insta" (Mickey Mouse)
+          "<span className={"text-sprinkleBlue"}>Donuts</span> is the new{" "}
+          <span className={"text-sprinkleBlue"}>Insta</span>" (Mickey Mouse)
         </h2>
       </div>
 

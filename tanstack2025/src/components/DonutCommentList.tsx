@@ -26,7 +26,9 @@ function DonutCommentListView({ cardId }: DonutCommentListViewProps) {
 
   return comments.map((c) => (
     <div key={c.id} className={"CommentItem"}>
-      <p>{c.text}</p>
+      <p>
+        {c.text} <span className={"text-dough"}>({c.author})</span>
+      </p>
     </div>
   ));
 }

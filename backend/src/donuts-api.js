@@ -43,13 +43,13 @@ const allComments = [
     "id": "cmt_001",
     "text": "Schmeckt nach einem Commit ohne Review – riskant, aber genial.",
     "author": "code_cruncher42",
-    "donut_id": "1"
+    "donut_id": "3"
   },
   {
     "id": "cmt_002",
     "text": "Streusel-Level: 11/10. Mein Linter würde meckern, aber ich nicht.",
     "author": "frontendFlo",
-    "donut_id": "1"
+    "donut_id": "3"
   },
   {
     "id": "cmt_003",
@@ -67,13 +67,13 @@ const allComments = [
     "id": "cmt_005",
     "text": "Der Merge war süßer als erwartet. Trotzdem Konflikt im Magen.",
     "author": "gitgourmet",
-    "donut_id": "3"
+    "donut_id": "1"
   },
   {
     "id": "cmt_006",
     "text": "Hat mein Herz geforkt.",
     "author": "issue_lover",
-    "donut_id": "3"
+    "donut_id": "1"
   },
   {
     "id": "cmt_007",

@@ -16,7 +16,7 @@ function RouteComponent() {
       }
     >
       <h1 className={"text-4xl tracking-wider text-pink-600"}>
-        From devs to donuts ... commit to the hole.
+        The only ring worth scrolling for
       </h1>
       {donuts.map((d) => (
         <DonutDetail key={d.id} donut={d} />

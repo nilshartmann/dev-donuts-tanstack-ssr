@@ -4,6 +4,8 @@ import { fetchDonutDetailOpts } from "@/queries.ts";
 import { DonutDto } from "@/types.ts";
 import CommentList from "@/components/CommentList.tsx";
 import DonutCommentList from "@/components/DonutCommentList.tsx";
+import { LikesWidget } from "@/components/LikesWidget.tsx";
+import LoadingIndicator from "@/components/LoadingIndicator.tsx";
 
 export const Route = createFileRoute("/donuts/$donutId/")({
   component: RouteComponent,
@@ -30,6 +32,8 @@ function DonutDetail({ donut }: DonutDetailProps) {
       <Donut donut={donut} />
 
       <DonutCommentList donutId={donut.id} />
+
+      {/*<LikesWidget cardId={"1"} currentLikes={7} />*/}
     </div>
   );
 }
